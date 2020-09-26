@@ -13,6 +13,7 @@
       region: "{{ region }}"
       vpc_subnet_id: "{{ subnet_id }}"
       instance_role: "{{ iam_role }}"
+      state: running
       wait: true
       volumes:
         - device_name: /dev/sda1
@@ -20,7 +21,7 @@
             volume_type: gp2
             volume_size: "{{ root_volume_size }}"
             delete_on_termination: true
-            encrypted: true
+            encrypted: false
       name: "{{ instance_name }}"
       tags:
         created_by: "{{ your_name }}"
