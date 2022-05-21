@@ -1,0 +1,6 @@
+# Provisioning GCS Bucket With Ansible Tower (Enterprise)
+- name: create a bucket
+  google.cloud.gcp_storage_bucket:
+    name: {{ bucket_name }}
+    project: {{ project_id }}
+    state: {{ state }}
