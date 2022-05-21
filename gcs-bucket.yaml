@@ -4,3 +4,13 @@
     name: {{ bucket_name }}
     project: {{ project_id }}
     state: {{ state }}
+
+
+---
+- hosts: localhost
+  tasks:
+  - name: Create an S3 bucket
+    s3_bucket:
+      name: "{{ S3_Bucket_Name }}"
+      region: "{{ S3_Region_ID }}"
+      state: present
