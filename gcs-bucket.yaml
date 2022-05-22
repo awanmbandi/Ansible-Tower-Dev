@@ -1,16 +1,15 @@
-# Provisioning GCS Bucket With Ansible Tower (Enterprise)
-- name: create a bucket
-  google.cloud.gcp_storage_bucket:
-    name: {{ bucket_name }}
-    project: {{ project_id }}
-    state: {{ state }}
-
-
 ---
 - hosts: localhost
+  connection: local
+
   tasks:
-  - name: Create an S3 bucket
-    s3_bucket:
-      name: "{{ S3_Bucket_Name }}"
-      region: "{{ S3_Region_ID }}"
+  - gce:
+      instance_names: my-ansible-instance-12
+      zone: us-central1-a
+      machine_type: n1-standard-1
+      image: debian-8
       state: present
+      service_account_email: "ansible-tower@keen-airlock-342704.iam.gserviceaccount.com"
+      #credentials_file: "/home/mbandi-google/playbooks/private-sa-key.json"
+      project_id: "keen-airlock-342704"
+      disk_size: 32
